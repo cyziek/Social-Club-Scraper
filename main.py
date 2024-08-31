@@ -1,4 +1,4 @@
-from crew import get_crew_id, crew_members_import
+from crew import read_crew_name_from_file, crew_members_import
 from request.auth import refresh_token
 
 if __name__ == '__main__':

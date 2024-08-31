@@ -1,6 +1,8 @@
 import json
 
-import request_sender
+import requests
+
+from request.headers import get_headers
 
 
 def get_bearer():
@@ -38,7 +40,7 @@ def refresh_token():
 
 
 
-    response = requests.post('https://www.rockstargames.com/auth/ping-bearer.json', cookies=cookies_arr, headers=headers)
+    response = requests.post('https://www.rockstargames.com/auth/ping-bearer.json', cookies=cookies_arr, headers=get_headers())
 
     with open("request/bearer.txt", "w") as bearer_file:
         bearer_value = response.json()

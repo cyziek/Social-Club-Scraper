@@ -1,3 +1,5 @@
+import time
+
 import requests
 
 from request.auth import refresh_token
@@ -11,6 +13,7 @@ def send_request(url):
     try:
         response = requests.get(url, headers=headers, timeout=10)
         while attempt < 3 & response.status_code != 200:
+            time.sleep(1)
             refresh_token()
             attempt += 1
             response = requests.get(url, headers=headers, timeout=10)

@@ -1,7 +1,3 @@
-from request_sender.auth import get_bearer
-
-from request.auth import refresh_token
-
 
 def get_headers():
     with open("request/bearer.txt", 'r') as file:
