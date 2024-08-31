@@ -14,5 +14,5 @@ def get_users(crewId):
         response = requests.get(f"https://scapi.rockstargames.com/crew/rankMembership?crewId={crewId}&rankOrder={i}&onlineService=sc&searchTerm=&pageIndex=0&pageSize=1000", headers=headers())
         response = response.json()
         for user in response['rankMembers']:
-            with fop
-            print(user["nickname"])
+            with open("crew_members.txt", 'a', encoding='utf-8') as file:
+                file.write(str(user["nickname"])+ "\n")
