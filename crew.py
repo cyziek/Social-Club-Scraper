@@ -1,6 +1,4 @@
-import requests
-
-from api_requests import get_crew_id_by_name
+from requests.api_requests import get_crew_id_by_name
 
 
 def get_crew_id():

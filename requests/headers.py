@@ -1,4 +1,4 @@
-from auth import get_bearer
+from requests.auth import get_bearer
 
 
 def headers():
