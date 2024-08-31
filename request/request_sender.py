@@ -19,6 +19,6 @@ def send_request(url):
             response = requests.get(url, headers=headers, timeout=10)
     except requests.exceptions.Timeout:
         print(
-            "\n\n\nTwoje cookiesy wygasły! Zaloguj się w przglądarce i wyeksportuj pliki cookies do pliku request/cookies.txt\n\n\n")
+            "\n\n\nTwoje cookiesy wygasły! Zaloguj się w przglądarce i wyeksportuj pliki cookies do pliku request/COOKIES.txt\n\n\n")
 
     return response
