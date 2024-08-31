@@ -11,14 +11,15 @@ def send_request(url):
     response = None
     headers = get_headers()
     try:
-        response = requests.get(url, headers=headers, timeout=10)
+        response = requests.get(url, headers=headers, timeout=5)
         while attempt < 3 & response.status_code != 200:
             time.sleep(1)
             refresh_token()
             attempt += 1
-            response = requests.get(url, headers=headers, timeout=10)
+            response = requests.get(url, headers=headers, timeout=5)
     except requests.exceptions.Timeout:
         print(
             "\n\n\nTwoje cookiesy wygasły! Zaloguj się w przglądarce i wyeksportuj pliki cookies do pliku request/COOKIES.txt\n\n\n")
 
     return response
+

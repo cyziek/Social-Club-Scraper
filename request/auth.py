@@ -1,4 +1,5 @@
 import json
+import time
 
 import requests
 
@@ -38,9 +39,20 @@ def refresh_token():
 
             cookies_arr[key] = value
 
+##
+    try:
+        attempt = 0
+        response = requests.post('https://www.rockstargames.com/auth/ping-bearer.json', cookies=cookies_arr, headers=get_headers(), timeout=5)
+        while attempt < 3 & response.status_code != 200:
+            time.sleep(1)
+            refresh_token()
+            attempt += 1
+            response = requests.post('https://www.rockstargames.com/auth/ping-bearer.json', cookies=cookies_arr,
+                                     headers=get_headers(), timeout=5)
+    except requests.exceptions.Timeout:
+        return Exception("\n\n\nTwoje cookiesy wygasły! Zaloguj się w przglądarce i wyeksportuj pliki cookies do pliku request/COOKIES.txt\n\n\n")
+##
 
-
-    response = requests.post('https://www.rockstargames.com/auth/ping-bearer.json', cookies=cookies_arr, headers=get_headers())
 
     with open("request/bearer.txt", "w") as bearer_file:
         bearer_value = response.json()
