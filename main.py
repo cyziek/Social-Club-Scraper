@@ -1,6 +1,5 @@
-from requests.api_requests import get_users
-from crew import get_crew_id
+from crew import get_crew_id, crew_members_import
+from request.auth import refresh_token
 
 if __name__ == '__main__':
-    crewId = get_crew_id()
-    get_users(crewId)
+    crew_members_import()
