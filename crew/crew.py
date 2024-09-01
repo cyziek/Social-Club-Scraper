@@ -10,7 +10,6 @@ def crew_members_import():
 
 
 def read_crew_name_from_file():
-    print(os.getcwd() + "hehe")
     with open("CREW_NAME.txt", 'r', encoding="utf-8") as file:
         crew_name = file.readline()
     return crew_name
@@ -24,7 +23,9 @@ def get_crew_id_from_name(name):
 
 
 def get_users(crewId):
+
     open("./output/crew_members.txt", 'w', encoding='utf-8').close()
+
     for i in range(5):
         response = send_request(
             f"https://scapi.rockstargames.com/crew/rankMembership?crewId={crewId}&rankOrder={i}&onlineService=sc&searchTerm=&pageIndex=0&pageSize=1000")
