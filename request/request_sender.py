@@ -11,6 +11,7 @@ def send_request(url):
     response = None
     headers = get_headers()
     refresh_token()
+    time.sleep(1)
     try:
         response = requests.get(url, headers=headers, timeout=5)
         while attempt < 3 & response.status_code != 200:
