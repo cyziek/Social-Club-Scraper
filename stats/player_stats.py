@@ -1,8 +1,9 @@
+import time
+
 from html_parse.html_parser import has_current_platform_from_html
 from progress.progress import load_progress, load_user
 from request.request_sender import send_request
 from bs4 import BeautifulSoup
-
 
 def get_user_last_seen_date(user):
     gamesOwned = ""
@@ -11,6 +12,8 @@ def get_user_last_seen_date(user):
     response = response.json()
     lastSeen = "Unknown"
     try:
+        if response['accounts'][0]['rockstarAccount']['profileHidden']:
+            return "PROFIL PRYWATNY"
         gamesOwned = response['accounts'][0]['rockstarAccount']['gamesOwned']
     except:
         pass
@@ -19,7 +22,7 @@ def get_user_last_seen_date(user):
             lastSeen = i["lastSeen"]
             lastSeen = lastSeen.split("T")[0]
             if len(lastSeen) < 4:
-                lastSeen = "Unknown"
+                lastSeen = "PROFIL PRYWATNY"
     return lastSeen
 
 
