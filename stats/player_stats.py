@@ -34,7 +34,7 @@ def get_user_platforms(user):
         response = send_request(
             f"https://socialclub.rockstargames.com/member/{user}/games/gtav/{platform}/career/overview/gtaonline"
         )
-        platforms[platform] = has_current_platform_from_html(response.text)
-        return_platforms += platform + ";"
+        platforms[platform] = has_current_platform_from_html(response.text, platform)
+        return_platforms += platforms[platform] + ";"
 
     return return_platforms

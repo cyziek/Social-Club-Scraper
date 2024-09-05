@@ -21,6 +21,7 @@ def send_request(url):
             # refresh_token()
             time.sleep(3)
             attempt += 1
+            headers = get_headers()
             response = requests.get(url, headers=headers, timeout=5)
     except requests.exceptions.Timeout:
         print_err_message()
