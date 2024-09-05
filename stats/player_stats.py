@@ -30,10 +30,11 @@ def get_user_platforms(user):
     platforms = {"pc": " ", "ps4": " ", "ps5": " ", "xboxone": " ", "xboxsx": " "}
     return_platforms = ""
     for platform in platforms:
+        print(platform)
         response = send_request(
             f"https://socialclub.rockstargames.com/member/{user}/games/gtav/{platform}/career/overview/gtaonline"
         )
         platforms[platform] = has_current_platform_from_html(response.text)
-        return_platforms += platforms[platform] + ";"
+        return_platforms += platform + ";"
 
     return return_platforms

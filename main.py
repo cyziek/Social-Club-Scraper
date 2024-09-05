@@ -22,7 +22,7 @@ if __name__ == '__main__':
             else:
                 user_platforms = "?; ?; ?; ?; ?;"
             with open("./output/player_stats.txt", 'a') as file_last_seen:
-                file_last_seen.write(user + ";" + last_seen_date + "\n"+ user_platforms +"\n")
+                file_last_seen.write(user + ";" + last_seen_date + ";"+ user_platforms +"\n")
                 print(user + ";" + last_seen_date + ";" + user_platforms + "\n")
             save_progress(load_progress()+1)
             time.sleep(15)

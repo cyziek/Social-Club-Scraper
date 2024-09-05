@@ -14,9 +14,11 @@ def send_request(url):
     try:
         response = requests.get(url, headers=headers, timeout=5)
         while attempt < 3 and response.status_code != 200:
+            print(str(response.status_code) + " " + url + "\n")
+            print(headers)
             time.sleep(2)
             open_browser_and_refresh_session()
-            refresh_token()
+            # refresh_token()
             time.sleep(3)
             attempt += 1
             response = requests.get(url, headers=headers, timeout=5)
@@ -28,7 +30,7 @@ def send_request(url):
             print("Wystąpił błąd autoryzacji. Czekam 30 sekund i próbuję ponownie...")
             time.sleep(30)
             attempt += 1
-            refresh_token()
+            # refresh_token()
             send_request(url)
             print_err_message()
             return Exception

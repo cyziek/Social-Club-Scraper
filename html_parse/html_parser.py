@@ -8,7 +8,10 @@ def has_current_platform_from_html(html):
     for char_elem in char_elements:
         elem = char_elem.contents[5].contents[1]
         money = elem.string[1::]
-        if money != '0':
+        money = money.replace('K', '')
+        money = money.replace('M', '')
+        if float(money) > 0:
+            print(money)
             hasCurrentPlatform = "YES"
             return hasCurrentPlatform
     return hasCurrentPlatform
