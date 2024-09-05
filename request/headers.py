@@ -16,7 +16,7 @@ def get_headers():
         'Sec-Fetch-Mode': 'cors',
         'Sec-Fetch-Site': 'same-site',
         'Cookie': get_cookies_as_header(),
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81',
         'authorization': f'Bearer {bearer}',
         'baggage': 'sentry-environment=prod,sentry-release=2024-08-26dif_prod.sc,sentry-public_key=9c63ab4e6cf94378a829ec7518e1eaf6,sentry-trace_id=fa23d26506bc47b78163f5151d076744,sentry-sample_rate=0.0025,sentry-transaction=%2Fcrew%2F%3AcrewName%2F%3AcrewId%3F,sentry-sampled=false',
         'sec-ch-ua': '"Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"',
