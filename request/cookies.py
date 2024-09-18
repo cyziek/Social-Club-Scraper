@@ -4,7 +4,10 @@ import json
 def get_cookies():
     with open("COOKIES.txt", 'r') as file:
         data = file.read()
-        cookie_list = json.loads(data)
+        try:
+            cookie_list = json.loads(data)
+        except json.decoder.JSONDecodeError:
+            return ""
         cookie_dict = {}
         for cookie in cookie_list:
             cookie_key = cookie['name']

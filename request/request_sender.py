@@ -2,7 +2,7 @@ import time
 
 import requests
 
-from browser.selenium_auth import open_browser_and_refresh_session
+from browser.playwright_auth import open_browser_and_refresh_session
 from request.auth import refresh_token
 from request.headers import get_headers
 
@@ -13,16 +13,19 @@ def send_request(url):
     headers = get_headers()
     try:
         response = requests.get(url, headers=headers, timeout=5)
+        if response.status_code == 429:
+            print("Zbyt szybkie odpytywanie API! Czekam 60 sekund i kontunuuję.")
+            time.sleep(60)
         while attempt < 3 and response.status_code != 200:
-            print(str(response.status_code) + " " + url + "\n")
-            print(headers)
-            time.sleep(2)
-            open_browser_and_refresh_session()
-            # refresh_token()
-            time.sleep(3)
-            attempt += 1
-            headers = get_headers()
-            response = requests.get(url, headers=headers, timeout=5)
+                print(str(response.status_code) + " " + url + "\n")
+                print(headers)
+                time.sleep(2)
+                open_browser_and_refresh_session()
+                # refresh_token()
+                time.sleep(3)
+                attempt += 1
+                headers = get_headers()
+                response = requests.get(url, headers=headers, timeout=5)
     except requests.exceptions.Timeout:
         print_err_message()
     if response.status_code == 401:
@@ -35,6 +38,7 @@ def send_request(url):
             send_request(url)
             print_err_message()
             return Exception
+
     return response
 
 

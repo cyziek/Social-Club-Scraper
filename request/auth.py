@@ -3,7 +3,7 @@ import time
 
 import requests
 
-from browser.selenium_auth import open_browser_and_refresh_session
+from browser.playwright_auth import open_browser_and_refresh_session
 from request.cookies import get_cookies, upsert_cookie
 from request.headers import get_headers
 
