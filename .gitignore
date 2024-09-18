@@ -1,3 +1,6 @@
+request/bearer.txt
+bearer.txt
+*.txt
 .idea/
 *.pyc
 *.xml
